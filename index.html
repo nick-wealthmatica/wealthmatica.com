@@ -558,6 +558,13 @@
     .portfolio-card { grid-template-columns: 1fr; padding: 44px 24px; gap: 40px; }
     .pill-2 { right: -2%; }
     .pill-4 { left: -2%; }
+    .contact-actions { flex-direction: column; align-items: stretch; }
+    .contact-actions .btn { justify-content: center; }
+    .btn-email { font-size: clamp(0.75rem, 3.1vw, 1rem); padding: 14px 14px; }
+    .btn-email svg { width: 15px; height: 15px; }
+    .contact-form input, .contact-form textarea { font-size: 16px; }
+    .cta-row { flex-direction: column; align-items: center; }
+    .cta-row .btn { width: min(300px, 100%); justify-content: center; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -738,7 +745,7 @@
 
         <p class="contact-alt">Or reach me directly</p>
         <div class="contact-actions">
-          <a class="btn btn-navy" href="mailto:nick.simpson@wealthmatica.com">
+          <a class="btn btn-navy btn-email" href="mailto:nick.simpson@wealthmatica.com">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 5h20v14H2V5zm2 2.4V17h16V7.4l-8 5.3-8-5.3zM19.2 7H4.8L12 11.8 19.2 7z"/></svg>
             nick.simpson@wealthmatica.com
           </a>
