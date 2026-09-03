@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealthmatica</title>
+<meta name="description" content="Wealthmatica. Independent equity research, financial charts, and plain-English market commentary from Nick.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root {
+    --blue: #1F7CF9;
+    --blue-deep: #0C51C4;
+    --blue-bright: #2E8DF8;
+    --navy: #12224E;
+    --ink: #0E1A3E;
+    --cream: #F6F2E8;
+    --white: #FFFFFF;
+    --chip: #101B3F;
+    --ring: rgba(255, 255, 255, 0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', 'Trebuchet MS', sans-serif;
+    background: linear-gradient(115deg, var(--blue-deep) 0%, var(--blue) 46%, var(--blue-bright) 100%);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Speckle texture, echoing the banner grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.16 0 0 0 0 0.38 0 0 0 0.55 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 0 0 0.5 0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- header ---------- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 0 0;
+  }
+
+  .brandmark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .brandmark img { width: 38px; height: 38px; }
+
+  nav { display: flex; gap: 8px; }
+
+  nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 9px 16px;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+
+  nav a:hover { background: rgba(255, 255, 255, 0.14); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 84px 0 96px;
+    text-align: center;
+  }
+
+  .hero-marks {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 34px;
+  }
+
+  .badge-w {
+    width: 148px;
+    height: 148px;
+    filter: drop-shadow(0 14px 34px rgba(7, 32, 84, 0.45));
+  }
+
+  .avatar {
+    width: 148px;
+    height: 148px;
+    margin-left: -30px;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 14px 34px rgba(7, 32, 84, 0.45));
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 11.5vw, 5.6rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .squiggle {
+    display: block;
+    width: min(380px, 70%);
+    margin: 18px auto 26px;
+  }
+
+  .hero p {
+    max-width: 560px;
+    margin: 0 auto 40px;
+    font-size: 1.18rem;
+    font-weight: 500;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 28px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 1rem;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--blue-deep);
+    box-shadow: 0 10px 26px rgba(7, 32, 84, 0.35);
+  }
+
+  .btn-primary:hover { box-shadow: 0 16px 34px rgba(7, 32, 84, 0.45); }
+
+  .btn-ghost {
+    color: var(--white);
+    border: 2px solid var(--ring);
+  }
+
+  .btn-ghost:hover { border-color: var(--white); background: rgba(255, 255, 255, 0.1); }
+
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* ---------- load-in ---------- */
+  .rise {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: rise 0.7s cubic-bezier(0.22, 0.9, 0.3, 1) forwards;
+  }
+
+  .rise.d1 { animation-delay: 0.05s; }
+  .rise.d2 { animation-delay: 0.16s; }
+  .rise.d3 { animation-delay: 0.27s; }
+  .rise.d4 { animation-delay: 0.38s; }
+  .rise.d5 { animation-delay: 0.49s; }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- section shell ---------- */
+  section { padding: 30px 0 70px; }
+
+  .kicker {
+    display: block;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 44px;
+  }
+
+  /* ---------- what i do ---------- */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .pillar {
+    background: rgba(9, 30, 78, 0.32);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 22px;
+    padding: 30px 26px;
+    backdrop-filter: blur(4px);
+  }
+
+  .pillar h3 {
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9FD3FF;
+    margin-bottom: 12px;
+  }
+
+  .pillar p {
+    font-size: 0.98rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* ---------- socials: sticker cards ---------- */
+  .stickers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .sticker {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 26px 24px 24px;
+    text-decoration: none;
+    color: var(--ink);
+    box-shadow: 0 12px 30px rgba(7, 32, 84, 0.35);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sticker:nth-child(1) { transform: rotate(-1.6deg); }
+  .sticker:nth-child(2) { transform: rotate(1.1deg); }
+  .sticker:nth-child(3) { transform: rotate(-0.8deg); }
+
+  .sticker:hover {
+    transform: rotate(0deg) translateY(-6px);
+    box-shadow: 0 20px 40px rgba(7, 32, 84, 0.45);
+  }
+
+  .sticker-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sticker-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    flex: none;
+  }
+
+  .sticker-icon svg { width: 22px; height: 22px; }
+
+  .icon-x { background: #0F1419; }
+  .icon-sub { background: #FF6719; }
+  .icon-yt { background: #FF0000; }
+
+  .sticker-name { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; }
+
+  .handle {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    background: var(--chip);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 7px 14px;
+    border-radius: 999px;
+  }
+
+  .sticker p {
+    font-size: 0.93rem;
+    font-weight: 500;
+    line-height: 1.55;
+    color: #47547A;
+  }
+
+  .sticker-cta {
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--blue-deep);
+  }
+
+  /* ---------- contact ---------- */
+  .contact-card {
+    background: var(--cream);
+    color: var(--ink);
+    border-radius: 26px;
+    padding: 52px 40px;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(7, 32, 84, 0.4);
+  }
+
+  .contact-card .kicker { color: #5A67A0; }
+
+  .contact-card h2 { color: var(--ink); margin-bottom: 16px; }
+
+  .contact-card > p {
+    max-width: 480px;
+    margin: 0 auto 32px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #3B4874;
+  }
+
+  .contact-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-navy {
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 10px 24px rgba(14, 26, 62, 0.3);
+  }
+
+  .btn-outline-navy {
+    color: var(--navy);
+    border: 2px solid var(--navy);
+  }
+
+  .btn-outline-navy:hover { background: rgba(18, 34, 78, 0.08); }
+
+  /* ---------- footer ---------- */
+  footer {
+    padding: 56px 0 44px;
+    text-align: center;
+  }
+
+  .footer-mark {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .footer-mark img { width: 48px; height: 48px; }
+
+  footer .disclaimer {
+    max-width: 520px;
+    margin: 0 auto 18px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  footer .fine {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 760px) {
+    .pillars, .stickers { grid-template-columns: 1fr; }
+    .sticker:nth-child(n) { transform: rotate(0); }
+    .hero { padding: 60px 0 72px; }
+    .badge-w, .avatar { width: 118px; height: 118px; }
+    .avatar { margin-left: -26px; }
+    nav a:not(.nav-contact) { display: none; }
+    .contact-card { padding: 40px 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rise { animation: none; opacity: 1; transform: none; }
+    .btn, .sticker { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="rise">
+    <a class="brandmark" href="#top">
+      <img src="logo.png" alt="">
+      Wealthmatica
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#socials">Socials</a>
+      <a class="nav-contact" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero-marks rise d1">
+        <img class="badge-w" src="logo.png" alt="Wealthmatica logo">
+        <img class="avatar" src="avatar.png" alt="Nick, the face behind Wealthmatica">
+      </div>
+
+      <h1 class="rise d2">Wealthmatica</h1>
+
+      <svg class="squiggle rise d2" viewBox="0 0 380 26" fill="none" aria-hidden="true">
+        <path d="M6 16 C 30 6, 48 22, 72 13 S 118 6, 142 15 S 190 22, 214 12 S 262 6, 286 16 S 336 20, 374 10"
+              stroke="#12224E" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+
+      <p class="rise d3">
+        Independent equity research, financial charts, and market commentary
+        in plain English. No hype, no hot takes, just the work.
+      </p>
+
+      <div class="cta-row rise d4">
+        <a class="btn btn-primary" href="https://wealthmatica.substack.com/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3h16v2.6H4V3zm0 5.2h16v2.6H4V8.2zM4 13.4h16V21l-8-4.2L4 21v-7.6z"/></svg>
+          Read the Substack
+        </a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/@wealthmatica" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.6c-.3-1.2-1.2-2.1-2.4-2.4C18.6 4.7 12 4.7 12 4.7s-6.6 0-8.6.5C2.2 5.5 1.3 6.4 1 7.6.5 9.6.5 12 .5 12s0 2.4.5 4.4c.3 1.2 1.2 2.1 2.4 2.4 2 .5 8.6.5 8.6.5s6.6 0 8.6-.5c1.2-.3 2.1-1.2 2.4-2.4.5-2 .5-4.4.5-4.4s0-2.4-.5-4.4zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          Watch on YouTube
+        </a>
+      </div>
+    </section>
+
+    <section id="about">
+      <span class="kicker">What I do</span>
+      <h2>One brand, three lanes</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <h3>Research</h3>
+          <p>Deep dives into public companies: the business model, the numbers, and what actually drives the stock.</p>
+        </div>
+        <div class="pillar">
+          <h3>Charts</h3>
+          <p>Clean financial visuals that make revenue, margins, and valuation easy to read at a glance.</p>
+        </div>
+        <div class="pillar">
+          <h3>Commentary</h3>
+          <p>Straightforward takes on markets and the companies I follow, written for people who want signal, not noise.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="socials">
+      <span class="kicker">Find me</span>
+      <h2>Same name everywhere</h2>
+      <div class="stickers">
+        <a class="sticker" href="https://x.com/wealthmatica" target="_blank" rel="noopener">
+          <div class="sticker-top">
+            <span class="sticker-icon icon-x">
+              <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1.6 2H8l4.4 5.9L18.9 2zm-1.1 18.1h1.7L7.1 3.8H5.3l12.5 16.3z"/></svg>
+            </span>
+            <span class="sticker-name">X</span>
+          </div>
+          <span class="handle">@wealthmatica</span>
+          <p>Daily charts, market notes, and whatever the tape is doing today.</p>
+          <span class="sticker-cta">Follow on X</span>
+        </a>
+
+        <a class="sticker" href="https://wealthmatica.substack.com/" target="_blank" rel="noopener">
+          <div class="sticker-top">
+            <span class="sticker-icon icon-sub">
+              <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M4 3h16v2.6H4V3zm0 5.2h16v2.6H4V8.2zM4 13.4h16V21l-8-4.2L4 21v-7.6z"/></svg>
+            </span>
+            <span class="sticker-name">Substack</span>
+          </div>
+          <span class="handle">@wealthmatica</span>
+          <p>Long-form research and company deep dives, delivered to your inbox.</p>
+          <span class="sticker-cta">Subscribe free</span>
+        </a>
+
+        <a class="sticker" href="https://www.youtube.com/@wealthmatica" target="_blank" rel="noopener">
+          <div class="sticker-top">
+            <span class="sticker-icon icon-yt">
+              <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M23 7.6c-.3-1.2-1.2-2.1-2.4-2.4C18.6 4.7 12 4.7 12 4.7s-6.6 0-8.6.5C2.2 5.5 1.3 6.4 1 7.6.5 9.6.5 12 .5 12s0 2.4.5 4.4c.3 1.2 1.2 2.1 2.4 2.4 2 .5 8.6.5 8.6.5s6.6 0 8.6-.5c1.2-.3 2.1-1.2 2.4-2.4.5-2 .5-4.4.5-4.4s0-2.4-.5-4.4zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+            </span>
+            <span class="sticker-name">YouTube</span>
+          </div>
+          <span class="handle">@wealthmatica</span>
+          <p>Video breakdowns of earnings, valuations, and the stories behind the stocks.</p>
+          <span class="sticker-cta">Watch the channel</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-card">
+        <span class="kicker">Contact</span>
+        <h2>Get in touch</h2>
+        <p>
+          For questions, collaborations, or anything business related, email is best.
+          For quick stuff, my DMs on X are open.
+        </p>
+        <div class="contact-actions">
+          <a class="btn btn-navy" href="mailto:nick.simpson@wealthmatica.com">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 5h20v14H2V5zm2 2.4V17h16V7.4l-8 5.3-8-5.3zM19.2 7H4.8L12 11.8 19.2 7z"/></svg>
+            nick.simpson@wealthmatica.com
+          </a>
+          <a class="btn btn-outline-navy" href="https://x.com/wealthmatica" target="_blank" rel="noopener">
+            DM me on X
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-mark">
+      <img src="logo.png" alt="">
+    </div>
+    <p class="disclaimer">
+      Everything on this site and my channels is for education and entertainment.
+      It is not financial advice. Do your own research before making any investment.
+    </p>
+    <p class="fine">&copy; 2026 Wealthmatica</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
