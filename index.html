@@ -323,6 +323,98 @@
     color: var(--blue-deep);
   }
 
+  /* ---------- offer ---------- */
+  .offer-card {
+    background: var(--white);
+    border-radius: 26px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 44px;
+    align-items: center;
+    color: var(--ink);
+    box-shadow: 0 16px 40px rgba(7, 32, 84, 0.4);
+  }
+
+  .offer-card .kicker { text-align: left; color: #3D74D4; }
+
+  .offer-card h2 { text-align: left; color: var(--ink); margin-bottom: 14px; }
+
+  .offer-brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+  }
+
+  .offer-brand svg { width: 50px; height: 50px; flex: none; }
+
+  .offer-brand-name {
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .offer-card p {
+    color: #3B4874;
+    font-weight: 500;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .offer-note {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #8A90AC;
+    margin-bottom: 0;
+  }
+
+  .offer-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .coupon {
+    font-family: inherit;
+    border: 3px dashed #3D74D4;
+    border-radius: 18px;
+    padding: 18px 16px;
+    background: #F0F5FE;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .coupon:hover { background: #E3EDFD; transform: translateY(-2px); }
+
+  .coupon .code {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #1D4FA8;
+  }
+
+  .coupon .hint {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7A87AD;
+  }
+
+  .btn-sa {
+    background: #3D74D4;
+    color: var(--white);
+    justify-content: center;
+    box-shadow: 0 10px 24px rgba(61, 116, 212, 0.35);
+  }
+
+  .btn-sa:hover { box-shadow: 0 14px 30px rgba(61, 116, 212, 0.45); }
+
   /* ---------- portfolio ---------- */
   .portfolio-card {
     background: var(--chip);
@@ -558,6 +650,7 @@
     .portfolio-card { grid-template-columns: 1fr; padding: 44px 24px; gap: 40px; }
     .pill-2 { right: -2%; }
     .pill-4 { left: -2%; }
+    .offer-card { grid-template-columns: 1fr; padding: 40px 24px; gap: 30px; }
     .contact-actions { flex-direction: column; align-items: stretch; }
     .contact-actions .btn { justify-content: center; }
     .btn-email { font-size: clamp(0.75rem, 3.1vw, 1rem); padding: 14px 14px; }
@@ -683,6 +776,36 @@
       </div>
     </section>
 
+    <section id="perks">
+      <div class="offer-card">
+        <div class="offer-copy">
+          <div class="offer-brand">
+            <svg viewBox="0 0 774.15 774.15" aria-hidden="true">
+              <path fill="#3D74D4" d="M225.95,0h322.25c124.71,0,225.95,101.25,225.95,225.95v322.25c0,124.71-101.25,225.95-225.95,225.95H225.95C101.25,774.15,0,672.91,0,548.2V225.95C0,101.25,101.25,0,225.95,0Z"/>
+              <path fill="#FFFFFF" d="M577.07,207.49h-112.39l-66.15,176.13c2.53,3.67,4.75,7.46,6.85,11.37,8.9,16.78,13.35,36.5,13.35,58.75,0,36.62-9.26,67.23-27.6,91.04-6.19,8.06-13.23,15.33-20.99,21.89h55.8l21.47-62.24h143.24l21.47,62.24h99.82l-134.88-359.17ZM469.91,434.37l26.16-75.77c2.05-6.31,4.39-13.59,7.04-21.95,2.59-8.42,5.23-16.78,7.82-25.14,2.65-8.36,4.63-15.81,6.01-22.49h3.67c1.74,4.93,3.49,10.64,5.23,17.26,1.74,6.67,3.55,13.17,5.47,19.6,1.92,6.49,3.85,12.57,5.77,18.34,1.92,5.71,3.55,10.52,4.99,14.37l25.62,75.77h-97.78Z"/>
+              <path fill="#FFFFFF" d="M227.41,572.94c-22.66,0-43.91-2.01-63.78-6.01-19.87-4.01-37.38-10.54-52.54-19.61-15.16-9.06-27.1-21-35.81-35.81-8.72-14.81-13.08-33.02-13.08-54.64v-4.7c0-1.74.17-3.14.52-4.18h90.45c0,1.04-.09,2.35-.26,3.92-.18,1.57-.26,2.87-.26,3.92,0,11.15,2.87,20.12,8.62,26.92,5.75,6.79,13.86,11.68,24.31,14.64,10.46,2.96,22.66,4.45,36.6,4.45,7.66,0,14.81-.35,21.43-1.05,6.62-.69,12.55-1.91,17.78-3.66,5.23-1.74,9.84-3.92,13.85-6.53,4.01-2.62,6.98-5.75,8.89-9.42,1.91-3.66,2.88-7.92,2.88-12.81,0-8.01-3.06-14.64-9.15-19.87-6.11-5.23-14.3-9.58-24.58-13.07-10.28-3.47-21.88-6.79-34.77-9.93-12.9-3.13-26.31-6.44-40.26-9.93-13.94-3.48-27.36-7.84-40.26-13.08-12.9-5.23-24.49-11.84-34.77-19.86-10.28-8.01-18.48-18.04-24.57-30.06-6.11-12.03-9.15-26.58-9.15-43.66,0-18.82,4.01-35.11,12.03-48.88,8.01-13.76,19.09-25,33.2-33.72,14.12-8.71,30.41-15.07,48.89-19.08,18.47-4,38.16-6.01,59.08-6.01s39.82,2.09,57.77,6.28c17.95,4.18,33.9,10.72,47.84,19.61,13.94,8.89,24.83,20.05,32.68,33.46,7.84,13.42,11.93,29.53,12.28,48.35v6.28h-89.91v-3.66c0-8.01-2.18-15.07-6.54-21.17-4.37-6.09-10.9-10.98-19.61-14.64-8.71-3.66-19.52-5.5-32.41-5.5s-23.78,1.23-32.68,3.67c-8.89,2.44-15.69,5.93-20.39,10.45-4.7,4.53-7.06,9.93-7.06,16.21,0,7.67,3.05,13.94,9.15,18.82,6.09,4.89,14.37,9.07,24.83,12.54,10.45,3.49,22.12,6.72,35.03,9.67,12.88,2.97,26.22,6.11,39.99,9.41,13.76,3.32,27.09,7.5,39.99,12.55,12.89,5.06,24.57,11.5,35.03,19.34,10.45,7.84,18.73,17.51,24.83,29.02,6.09,11.5,9.15,25.44,9.15,41.82,0,28.58-6.72,51.59-20.12,69.01-13.43,17.43-31.9,30.15-55.42,38.16-23.53,8.01-50.11,12.03-79.73,12.03Z"/>
+            </svg>
+            <span class="offer-brand-name">Stock Analysis</span>
+          </div>
+          <span class="kicker">Supporter perk</span>
+          <h2>10% off Stock Analysis</h2>
+          <p>The platform I use for financials, charting, and screening: clean data on
+             100,000+ stocks, ETFs, and funds. Use my link with code
+             <strong>WEALTH</strong> at checkout and supporters get 10% off any plan.</p>
+          <p class="offer-note">Affiliate link. Using it supports Wealthmatica at no extra cost to you.</p>
+        </div>
+        <div class="offer-side">
+          <button class="coupon" id="coupon" type="button" aria-label="Copy discount code WEALTH">
+            <span class="code">WEALTH</span>
+            <span class="hint" id="coupon-hint">Tap to copy code</span>
+          </button>
+          <a class="btn btn-sa" href="https://tolt.link/wealthmatica" target="_blank" rel="noopener">
+            Get 10% off Stock Analysis
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="portfolio">
       <div class="portfolio-card">
         <div class="donut-wrap">
@@ -772,6 +895,20 @@
 </div>
 
 <script>
+  var coupon = document.getElementById('coupon');
+  coupon.addEventListener('click', function () {
+    var hint = document.getElementById('coupon-hint');
+    function done(ok) {
+      hint.textContent = ok ? 'Copied!' : 'Code: WEALTH';
+      setTimeout(function () { hint.textContent = 'Tap to copy code'; }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText('WEALTH').then(function () { done(true); }, function () { done(false); });
+    } else {
+      done(false);
+    }
+  });
+
   var form = document.getElementById('contact-form');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
