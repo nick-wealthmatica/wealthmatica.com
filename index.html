@@ -653,8 +653,6 @@
     .offer-card { grid-template-columns: 1fr; padding: 40px 24px; gap: 30px; }
     .contact-actions { flex-direction: column; align-items: stretch; }
     .contact-actions .btn { justify-content: center; }
-    .btn-email { font-size: clamp(0.75rem, 3.1vw, 1rem); padding: 14px 14px; }
-    .btn-email svg { width: 15px; height: 15px; }
     .contact-form input, .contact-form textarea { font-size: 16px; }
     .cta-row { flex-direction: column; align-items: center; }
     .cta-row .btn { width: min(300px, 100%); justify-content: center; }
@@ -868,9 +866,9 @@
 
         <p class="contact-alt">Or reach me directly</p>
         <div class="contact-actions">
-          <a class="btn btn-navy btn-email" href="mailto:nick.simpson@wealthmatica.com">
+          <a class="btn btn-navy btn-email" id="email-btn" href="#" aria-label="Email me">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 5h20v14H2V5zm2 2.4V17h16V7.4l-8 5.3-8-5.3zM19.2 7H4.8L12 11.8 19.2 7z"/></svg>
-            nick.simpson@wealthmatica.com
+            Email
           </a>
           <a class="btn btn-outline-navy" href="https://x.com/wealthmatica" target="_blank" rel="noopener">
             DM me on X
@@ -895,6 +893,9 @@
 </div>
 
 <script>
+  var emailBtn = document.getElementById('email-btn');
+  emailBtn.setAttribute('href', 'mailto:' + ['nick', 'simpson'].join('.') + '@' + 'wealthmatica' + '.com');
+
   var coupon = document.getElementById('coupon');
   coupon.addEventListener('click', function () {
     var hint = document.getElementById('coupon-hint');
