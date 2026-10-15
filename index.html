@@ -419,42 +419,42 @@
   .portfolio-card {
     background: var(--chip);
     border-radius: 26px;
-    padding: 40px 48px 52px;
+    padding: 26px 40px 32px;
     box-shadow: 0 16px 40px rgba(7, 32, 84, 0.4);
   }
 
   .pf-head {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding-bottom: 26px;
-    margin-bottom: 30px;
+    gap: 11px;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
-  .pf-head img { width: 46px; height: 46px; flex: none; }
+  .pf-head img { width: 38px; height: 38px; flex: none; }
 
-  .pf-name { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .pf-name { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; }
 
   .pf-handle {
     background: #060D27;
     color: var(--white);
     font-weight: 700;
-    font-size: 0.85rem;
-    padding: 6px 14px;
+    font-size: 0.8rem;
+    padding: 5px 13px;
     border-radius: 999px;
   }
 
   .pf-body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 34px;
     align-items: center;
   }
 
   .donut-wrap {
     position: relative;
-    width: min(330px, 100%);
+    width: min(240px, 100%);
     margin: 0 auto;
   }
 
@@ -465,27 +465,26 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 54%;
     background: var(--white);
     border-radius: 999px;
-    padding: 12px 10px 10px;
+    padding: 9px 8px 8px;
     text-align: center;
     box-shadow: 0 8px 20px rgba(4, 16, 48, 0.4);
   }
 
   .pf-center .masked {
     display: block;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: #1E7B34;
-    filter: blur(7px);
+    filter: blur(6px);
     user-select: none;
   }
 
   .pf-center .label {
     display: block;
-    margin-top: 2px;
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     font-weight: 800;
     color: var(--ink);
   }
@@ -494,35 +493,36 @@
     position: absolute;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: var(--white);
     border-radius: 999px;
-    padding: 7px 14px 7px 8px;
-    box-shadow: 0 8px 20px rgba(4, 16, 48, 0.45);
+    padding: 5px 12px 5px 6px;
+    box-shadow: 0 6px 16px rgba(4, 16, 48, 0.45);
+    white-space: nowrap;
     pointer-events: none;
   }
 
   .pill .dot {
-    width: 22px;
-    height: 22px;
+    width: 19px;
+    height: 19px;
     border-radius: 50%;
     flex: none;
   }
 
   .pill .blurred {
     font-weight: 800;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: var(--ink);
-    filter: blur(5px);
+    filter: blur(4.5px);
     user-select: none;
   }
 
-  .pill-1 { top: 30%; right: -13%; }
-  .pill-2 { top: 2%; right: 4%; }
-  .pill-3 { top: 1%; left: -4%; }
-  .pill-4 { top: 42%; left: -16%; }
-  .pill-5 { bottom: 12%; left: -10%; }
-  .pill-6 { bottom: -3%; left: 34%; }
+  .pill-1 { left: 95.6%; top: 44.2%; transform: translateY(-50%); }
+  .pill-2 { left: 44.2%; top: 95.6%; transform: translate(-50%, -50%); }
+  .pill-3 { right: 84.5%; top: 80.4%; transform: translateY(-50%); }
+  .pill-4 { right: 95.9%; top: 52.9%; transform: translateY(-50%); }
+  .pill-5 { right: 91.6%; top: 30.4%; transform: translateY(-50%); }
+  .pill-6 { right: 81.5%; top: 16.5%; transform: translateY(-50%); }
 
   .portfolio-copy .kicker {
     display: inline-flex;
@@ -530,60 +530,65 @@
     gap: 7px;
     text-align: left;
     color: #9FD3FF;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .portfolio-copy .kicker svg { width: 13px; height: 13px; }
 
-  .portfolio-copy h2 { text-align: left; margin-bottom: 10px; }
+  .portfolio-copy h2 {
+    text-align: left;
+    font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+    margin-bottom: 8px;
+  }
 
   .pf-sub {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.72);
-    margin-bottom: 22px;
+    margin-bottom: 14px;
   }
 
   .portfolio-copy > p {
-    font-size: 1.02rem;
+    font-size: 0.96rem;
     font-weight: 500;
-    line-height: 1.65;
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 26px;
+    margin-bottom: 18px;
   }
 
   .pf-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    padding: 20px 0 24px;
+    gap: 12px;
+    padding: 14px 0 16px;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    margin-bottom: 26px;
+    margin-bottom: 20px;
   }
 
   .pf-stat-label {
     display: block;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.55);
-    margin-bottom: 7px;
+    margin-bottom: 6px;
   }
 
   .pf-stat-value {
     display: block;
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--white);
-    filter: blur(6px);
+    filter: blur(5px);
     user-select: none;
   }
 
   .btn-sub {
     background: #FF6719;
     color: var(--white);
+    padding: 13px 24px;
     box-shadow: 0 10px 26px rgba(255, 103, 25, 0.35);
   }
 
@@ -591,8 +596,8 @@
 
   .portfolio-note {
     display: block;
-    margin-top: 14px;
-    font-size: 0.85rem;
+    margin-top: 12px;
+    font-size: 0.82rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.6);
   }
@@ -747,13 +752,13 @@
     .avatar { margin-left: -26px; }
     nav a:not(.nav-contact) { display: none; }
     .contact-card { padding: 40px 24px; }
-    .portfolio-card { padding: 32px 20px 40px; }
-    .pf-body { grid-template-columns: 1fr; gap: 36px; }
-    .pf-stats { grid-template-columns: repeat(2, 1fr); gap: 18px 14px; }
-    .donut-wrap { width: min(280px, 82%); }
-    .pill-1 { right: -9%; }
-    .pill-4 { left: -11%; }
-    .pill-5 { left: -7%; }
+    .portfolio-card { padding: 22px 18px 28px; }
+    .pf-body { grid-template-columns: 1fr; gap: 28px; }
+    .pf-stats { grid-template-columns: repeat(2, 1fr); gap: 14px 12px; }
+    .donut-wrap { width: min(190px, 62%); }
+    .pill { padding: 4px 10px 4px 5px; gap: 5px; }
+    .pill .dot { width: 15px; height: 15px; }
+    .pill .blurred { font-size: 0.68rem; filter: blur(4px); }
     .portfolio-copy .btn { width: 100%; justify-content: center; }
     .offer-card { grid-template-columns: 1fr; padding: 40px 24px; gap: 30px; }
     .contact-actions { flex-direction: column; align-items: stretch; }
@@ -934,12 +939,12 @@
               <span class="masked" aria-hidden="true">+00.0%</span>
               <span class="label">All time</span>
             </span>
-            <span class="pill pill-1"><span class="dot" style="background:#5AC8FA"></span><span class="blurred" aria-hidden="true">4X% ABCD</span></span>
-            <span class="pill pill-2"><span class="dot" style="background:#7DD8C0"></span><span class="blurred" aria-hidden="true">1X% EFG</span></span>
-            <span class="pill pill-3"><span class="dot" style="background:#F6F2E8"></span><span class="blurred" aria-hidden="true">1X% HIJ</span></span>
-            <span class="pill pill-4"><span class="dot" style="background:#6C7BE8"></span><span class="blurred" aria-hidden="true">X% KLMN</span></span>
-            <span class="pill pill-5"><span class="dot" style="background:#3E8EDD"></span><span class="blurred" aria-hidden="true">X% OPQ</span></span>
-            <span class="pill pill-6"><span class="dot" style="background:#9FE0F7"></span><span class="blurred" aria-hidden="true">X% RST</span></span>
+            <span class="pill pill-1"><span class="dot" style="background:#5AC8FA"></span><span class="blurred" aria-hidden="true">XXXX 00%</span></span>
+            <span class="pill pill-2"><span class="dot" style="background:#7DD8C0"></span><span class="blurred" aria-hidden="true">XXX 00%</span></span>
+            <span class="pill pill-3"><span class="dot" style="background:#F6F2E8"></span><span class="blurred" aria-hidden="true">XXXX 00%</span></span>
+            <span class="pill pill-4"><span class="dot" style="background:#6C7BE8"></span><span class="blurred" aria-hidden="true">XXX 00%</span></span>
+            <span class="pill pill-5"><span class="dot" style="background:#3E8EDD"></span><span class="blurred" aria-hidden="true">XXXX 0%</span></span>
+            <span class="pill pill-6"><span class="dot" style="background:#9FE0F7"></span><span class="blurred" aria-hidden="true">XXX 0%</span></span>
           </div>
           <div class="portfolio-copy">
             <span class="kicker">
@@ -947,10 +952,10 @@
               Paid subscriber access
             </span>
             <h2>The Wealthmatica Fund</h2>
-            <p class="pf-sub">Real holdings and real trades, synced from Wealthsimple and IBKR.</p>
-            <p>Every month, paid subscribers get the full portfolio update: every position
-               and allocation, what I bought and sold, the thinking behind each move, and
-               my strategy outlook for the month ahead.</p>
+            <p class="pf-sub">Real holdings and real trades from my own accounts.</p>
+            <p>Each month, paid subscribers get every position and allocation, what I
+               bought and sold, the thinking behind each move, and my outlook for
+               the month ahead.</p>
             <div class="pf-stats">
               <div>
                 <span class="pf-stat-label">Value</span>
