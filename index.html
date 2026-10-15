@@ -416,120 +416,126 @@
   .btn-sa:hover { box-shadow: 0 14px 30px rgba(61, 116, 212, 0.45); }
 
   /* ---------- portfolio ---------- */
+  /* Donut lifted from the wealthmatica-portfolio app (public/js/cards.js + css/cards.css). */
   .portfolio-card {
-    background: var(--chip);
+    --wm-navy: #12224E;
+    --wm-slate: #3B4874;
+    --wm-up: #0B7A55;
+    background-color: #0C51C4;
+    background-image:
+      radial-gradient(120% 90% at 85% 0%, rgba(46, 141, 248, 0.9) 0%, rgba(46, 141, 248, 0) 60%),
+      linear-gradient(155deg, #0A47AC 0%, #1668DF 62%, #2E8DF8 100%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 26px;
-    padding: 26px 40px 32px;
-    box-shadow: 0 16px 40px rgba(7, 32, 84, 0.4);
+    padding: 24px 44px 30px;
+    box-shadow: 0 18px 44px rgba(5, 24, 66, 0.5);
   }
 
   .pf-head {
     display: flex;
     align-items: center;
-    gap: 11px;
-    padding-bottom: 16px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    gap: 12px;
+    padding-bottom: 15px;
+    margin-bottom: 19px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
   }
 
   .pf-head img { width: 38px; height: 38px; flex: none; }
 
-  .pf-name { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; }
+  .pf-name { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
 
   .pf-handle {
-    background: #060D27;
+    background: #0E1A3E;
     color: var(--white);
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     padding: 5px 13px;
     border-radius: 999px;
   }
 
   .pf-body {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 34px;
+    grid-template-columns: 1.08fr 1fr;
+    gap: 36px;
     align-items: center;
   }
 
-  .donut-wrap {
+  .donut-wrap { width: min(340px, 100%); margin: 0 auto; }
+
+  .donut {
     position: relative;
-    width: min(240px, 100%);
-    margin: 0 auto;
+    width: 100%;
+    aspect-ratio: 1;
+    container-type: inline-size;
   }
 
-  .donut-wrap svg { width: 100%; height: auto; display: block; }
+  .donut-ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 
-  .pf-center {
+  .chip {
     position: absolute;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    width: 54%;
-    background: var(--white);
-    border-radius: 999px;
-    padding: 9px 8px 8px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(4, 16, 48, 0.4);
-  }
-
-  .pf-center .masked {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #1E7B34;
-    filter: blur(6px);
-    user-select: none;
-  }
-
-  .pf-center .label {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 800;
-    color: var(--ink);
-  }
-
-  .pill {
-    position: absolute;
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: var(--white);
+    gap: 1.6cqw;
+    padding: 1.1cqw 3cqw 1.1cqw 1.1cqw;
     border-radius: 999px;
-    padding: 5px 12px 5px 6px;
-    box-shadow: 0 6px 16px rgba(4, 16, 48, 0.45);
+    background: #fff;
+    box-shadow: 0 0.5cqw 1.8cqw rgba(8, 22, 64, 0.24);
     white-space: nowrap;
-    pointer-events: none;
   }
 
-  .pill .dot {
-    width: 19px;
-    height: 19px;
-    border-radius: 50%;
+  .chip-logo {
+    width: 6.6cqw;
+    height: 6.6cqw;
     flex: none;
+    border-radius: 50%;
+    background: #fff;
   }
 
-  .pill .blurred {
-    font-weight: 800;
-    font-size: 0.78rem;
-    color: var(--ink);
-    filter: blur(4.5px);
+  .chip-logo--masked {
+    background: linear-gradient(135deg, #C3D2EA 0%, #9FB4D4 100%);
+    filter: blur(0.8cqw);
+  }
+
+  .chip-pct {
+    font-size: 4.2cqw;
+    font-weight: 700;
+    color: var(--wm-slate);
+    filter: blur(1.35cqw);
     user-select: none;
   }
 
-  .pill-1 { left: 95.6%; top: 44.2%; transform: translateY(-50%); }
-  .pill-2 { left: 44.2%; top: 95.6%; transform: translate(-50%, -50%); }
-  .pill-3 { right: 84.5%; top: 80.4%; transform: translateY(-50%); }
-  .pill-4 { right: 95.9%; top: 52.9%; transform: translateY(-50%); }
-  .pill-5 { right: 91.6%; top: 30.4%; transform: translateY(-50%); }
-  .pill-6 { right: 81.5%; top: 16.5%; transform: translateY(-50%); }
+  .donut-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8cqw;
+  }
+
+  .donut-center .pill {
+    padding: 1.2cqw 4cqw;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 7.4cqw;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+  }
+
+  .donut-center .pill--up { color: var(--wm-up); filter: blur(2cqw); user-select: none; }
+
+  .donut-center-label { font-size: 4.6cqw; font-weight: 800; color: #fff; }
 
   .portfolio-copy .kicker {
     display: inline-flex;
     align-items: center;
     gap: 7px;
     text-align: left;
-    color: #9FD3FF;
+    color: #CFE4FF;
     margin-bottom: 10px;
   }
 
@@ -537,33 +543,33 @@
 
   .portfolio-copy h2 {
     text-align: left;
-    font-size: clamp(1.5rem, 2.6vw, 1.95rem);
-    margin-bottom: 8px;
+    font-size: clamp(1.55rem, 2.7vw, 2.05rem);
+    margin-bottom: 7px;
   }
 
   .pf-sub {
-    font-size: 0.95rem;
+    font-size: 0.97rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.72);
-    margin-bottom: 14px;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 12px;
   }
 
   .portfolio-copy > p {
-    font-size: 0.96rem;
+    font-size: 0.98rem;
     font-weight: 500;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 18px;
+    line-height: 1.62;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 15px;
   }
 
   .pf-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-    padding: 14px 0 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    margin-bottom: 20px;
+    padding: 12px 0 13px;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    margin-bottom: 16px;
   }
 
   .pf-stat-label {
@@ -572,13 +578,13 @@
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 6px;
   }
 
   .pf-stat-value {
     display: block;
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 800;
     color: var(--white);
     filter: blur(5px);
@@ -589,17 +595,17 @@
     background: #FF6719;
     color: var(--white);
     padding: 13px 24px;
-    box-shadow: 0 10px 26px rgba(255, 103, 25, 0.35);
+    box-shadow: 0 10px 26px rgba(180, 60, 0, 0.4);
   }
 
-  .btn-sub:hover { box-shadow: 0 16px 34px rgba(255, 103, 25, 0.45); }
+  .btn-sub:hover { box-shadow: 0 16px 34px rgba(180, 60, 0, 0.5); }
 
   .portfolio-note {
     display: block;
-    margin-top: 12px;
+    margin-top: 9px;
     font-size: 0.82rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.72);
   }
 
   /* ---------- contact ---------- */
@@ -752,13 +758,10 @@
     .avatar { margin-left: -26px; }
     nav a:not(.nav-contact) { display: none; }
     .contact-card { padding: 40px 24px; }
-    .portfolio-card { padding: 22px 18px 28px; }
-    .pf-body { grid-template-columns: 1fr; gap: 28px; }
-    .pf-stats { grid-template-columns: repeat(2, 1fr); gap: 14px 12px; }
-    .donut-wrap { width: min(190px, 62%); }
-    .pill { padding: 4px 10px 4px 5px; gap: 5px; }
-    .pill .dot { width: 15px; height: 15px; }
-    .pill .blurred { font-size: 0.68rem; filter: blur(4px); }
+    .portfolio-card { padding: 24px 18px 30px; }
+    .pf-body { grid-template-columns: 1fr; gap: 30px; }
+    .pf-stats { grid-template-columns: repeat(2, 1fr); gap: 16px 12px; }
+    .donut-wrap { width: min(300px, 100%); }
     .portfolio-copy .btn { width: 100%; justify-content: center; }
     .offer-card { grid-template-columns: 1fr; padding: 40px 24px; gap: 30px; }
     .contact-actions { flex-direction: column; align-items: stretch; }
@@ -923,28 +926,20 @@
         </div>
         <div class="pf-body">
           <div class="donut-wrap">
-            <svg viewBox="0 0 300 300" aria-label="Portfolio allocation chart with holdings hidden">
-              <g transform="rotate(-90 150 150)" fill="none" stroke-width="36">
-                <circle cx="150" cy="150" r="110" pathLength="100" stroke="#5AC8FA" stroke-dasharray="45.2 100" stroke-dashoffset="0"/>
-                <circle cx="150" cy="150" r="110" pathLength="100" stroke="#7DD8C0" stroke-dasharray="11.2 100" stroke-dashoffset="-46"/>
-                <circle cx="150" cy="150" r="110" pathLength="100" stroke="#F6F2E8" stroke-dasharray="10.2 100" stroke-dashoffset="-58"/>
-                <circle cx="150" cy="150" r="110" pathLength="100" stroke="#6C7BE8" stroke-dasharray="9.2 100" stroke-dashoffset="-69"/>
-                <circle cx="150" cy="150" r="110" pathLength="100" stroke="#3E8EDD" stroke-dasharray="5.2 100" stroke-dashoffset="-79"/>
-                <circle cx="150" cy="150" r="110" pathLength="100" stroke="#9FE0F7" stroke-dasharray="5.2 100" stroke-dashoffset="-85"/>
-                <circle cx="150" cy="150" r="110" pathLength="100" stroke="#B8C4F0" stroke-dasharray="4.2 100" stroke-dashoffset="-91"/>
-                <circle cx="150" cy="150" r="110" pathLength="100" stroke="#2E8DF8" stroke-dasharray="3.2 100" stroke-dashoffset="-96"/>
-              </g>
-            </svg>
-            <span class="pf-center">
-              <span class="masked" aria-hidden="true">+00.0%</span>
-              <span class="label">All time</span>
-            </span>
-            <span class="pill pill-1"><span class="dot" style="background:#5AC8FA"></span><span class="blurred" aria-hidden="true">XXXX 00%</span></span>
-            <span class="pill pill-2"><span class="dot" style="background:#7DD8C0"></span><span class="blurred" aria-hidden="true">XXX 00%</span></span>
-            <span class="pill pill-3"><span class="dot" style="background:#F6F2E8"></span><span class="blurred" aria-hidden="true">XXXX 00%</span></span>
-            <span class="pill pill-4"><span class="dot" style="background:#6C7BE8"></span><span class="blurred" aria-hidden="true">XXX 00%</span></span>
-            <span class="pill pill-5"><span class="dot" style="background:#3E8EDD"></span><span class="blurred" aria-hidden="true">XXXX 0%</span></span>
-            <span class="pill pill-6"><span class="dot" style="background:#9FE0F7"></span><span class="blurred" aria-hidden="true">XXX 0%</span></span>
+          <div class="donut">
+          <svg class="donut-ring" viewBox="0 0 1000 1000" aria-hidden="true" role="img" aria-label="Allocation ring with holdings hidden"><path d="M505.5 160.04A340 340 0 0 1 839.63 515.86L721.84 508.45A222 222 0 0 0 505.5 278.07Z" fill="#FFFFFF" data-key="H0"/><path d="M838.94 526.83A340 340 0 0 1 630.26 814.06L586.81 704.32A222 222 0 0 0 721.15 519.42Z" fill="#12224E" data-key="H1"/><path d="M620.03 818.11A340 340 0 0 1 322.49 789.98L385.73 690.33A222 222 0 0 0 576.59 708.37Z" fill="#7DD8C0" data-key="H2"/><path d="M313.2 784.09A340 340 0 0 1 167.1 569.1L283.03 546.99A222 222 0 0 0 376.44 684.44Z" fill="#FFFFFF" data-key="H3"/><path d="M165.04 558.3A340 340 0 0 1 199.45 341.04L302.87 397.9A222 222 0 0 0 280.97 536.18Z" fill="#12224E" data-key="H4"/><path d="M204.74 331.41A340 340 0 0 1 331.41 204.74L388.26 308.17A222 222 0 0 0 308.17 388.26Z" fill="#7DD8C0" data-key="H5"/><path d="M341.04 199.45A340 340 0 0 1 494.5 160.04L494.5 278.07A222 222 0 0 0 397.9 302.87Z" fill="#12224E" data-key="H6"/></svg>
+          <div class="chip" style="left:76.60735490088152%;top:25.014030633602857%"><span class="chip-logo chip-logo--masked"></span><span class="chip-pct" aria-hidden="true">00%</span></div>
+          <div class="chip" style="left:79.52912029468558%;top:71.45416170867527%"><span class="chip-logo chip-logo--masked"></span><span class="chip-pct" aria-hidden="true">00%</span></div>
+          <div class="chip" style="left:46.56504656387418%;top:86.33801170801242%"><span class="chip-logo chip-logo--masked"></span><span class="chip-pct" aria-hidden="true">00%</span></div>
+          <div class="chip" style="left:19.811559038978505%;top:70.51604329160277%"><span class="chip-logo chip-logo--masked"></span><span class="chip-pct" aria-hidden="true">00%</span></div>
+          <div class="chip" style="left:13.94937556827747%;top:44.29014202603161%"><span class="chip-logo chip-logo--masked"></span><span class="chip-pct" aria-hidden="true">00%</span></div>
+          <div class="chip" style="left:23.575846650580246%;top:24.82036299375329%"><span class="chip-logo chip-logo--masked"></span><span class="chip-pct" aria-hidden="true">00%</span></div>
+          <div class="chip" style="left:41.777816635013245%;top:14.438142614417126%"><span class="chip-logo chip-logo--masked"></span><span class="chip-pct" aria-hidden="true">00%</span></div>
+          <div class="donut-center">
+          <span class="pill pill--up">+00.0%</span>
+          <span class="donut-center-label">All time</span>
+          </div>
+          </div>
           </div>
           <div class="portfolio-copy">
             <span class="kicker">
@@ -953,9 +948,8 @@
             </span>
             <h2>The Wealthmatica Fund</h2>
             <p class="pf-sub">Real holdings and real trades from my own accounts.</p>
-            <p>Each month, paid subscribers get every position and allocation, what I
-               bought and sold, the thinking behind each move, and my outlook for
-               the month ahead.</p>
+            <p>Every position and allocation, the thinking behind each trade, and
+               my strategy outlook for the month ahead.</p>
             <div class="pf-stats">
               <div>
                 <span class="pf-stat-label">Value</span>
